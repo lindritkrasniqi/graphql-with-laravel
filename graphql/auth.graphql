@@ -1,0 +1,38 @@
+extend type Query @guard {
+    me: User! @auth
+}
+
+extend type Mutation {
+    register(input: RegisterInput! @spread): User!
+    login(input: LoginInput! @spread): Token!
+    logout: Boolean! @guard
+    forgotPassword(input: ForgotPasswordInput! @spread): Message!
+    resetPassword(input: ResetPasswordInput! @spread): Message!
+}
+
+type Token {
+    token: String!
+}
+
+input RegisterInput {
+    name: String! @rules(apply: ["required", "string"], attribute: "name")
+    email: String! @rules(apply: ["required", "email", "unique:users,email"], attribute: "email")
+    password: String! @hash @rules(apply: ["required", "string", "min:8", "confirmed"], attribute: "password")
+    password_confirmation: String!
+}
+
+input LoginInput {
+    email: String! @rules(apply: ["required", "email", "string"], attribute: "email")
+    password: String! @rules(apply: ["required", "string", "min:8"], attribute: "password")
+}
+
+input ForgotPasswordInput {
+    email: String! @rules(apply: ["required", "email", "exists:users,email"], attribute: "email")
+}
+
+input ResetPasswordInput {
+    token: String! @rules(apply: ["required"], attribute: "token")
+    email: String! @rules(apply: ["required", "email"], attribute: "email")
+    password: String! @rules(apply: ["required", "string", "min:8", "confirmed"], attribute: "password")
+    password_confirmation: String!
+}

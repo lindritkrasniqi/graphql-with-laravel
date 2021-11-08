@@ -1,0 +1,9 @@
+#import auth.graphql
+#import user.graphql
+
+type Query
+type Mutation
+
+type Message {
+    message: String!
+}
