@@ -23,7 +23,7 @@ input RegisterInput {
 
 input LoginInput {
     email: String! @rules(apply: ["required", "email", "string"], attribute: "email")
-    password: String! @rules(apply: ["required", "string", "min:8"], attribute: "password")
+    password: String! @rules(apply: ["required", "string"], attribute: "password")
 }
 
 input ForgotPasswordInput {
