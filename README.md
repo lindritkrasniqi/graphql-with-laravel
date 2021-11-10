@@ -9,8 +9,9 @@
 
 ## About this repository
 
-This repository provides a simple Laravel GraphQL API's authentication with Sanctum package.
+This repository provides a simple Laravel GraphQL API's authentication with Sanctum package. You can fork this repository for your backend application and olso if you are familiar with Vue, you can use even frontend repository on link below.
 
+- Apollo with Vue 3 [repository](https://github.com/lindritkrasniqi/apollo-with-vue),
 - GraphQL API's [docs](https://www.postman.com/lindritkrasniqi/workspace/graphql-with-laravel) with Postman.
 
 ## About Laravel
